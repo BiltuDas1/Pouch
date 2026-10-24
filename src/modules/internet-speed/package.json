@@ -1,0 +1,14 @@
+{
+  "name": "@pouch/internet-speed",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "title": "Internet Test",
+  "description": "Test your internet by downloading samples",
+  "keywords": []
+}
