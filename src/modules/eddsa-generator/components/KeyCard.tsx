@@ -1,4 +1,4 @@
-import { Copy, Download } from "lucide-react";
+import { Copy, Download, Check } from "lucide-react";
 
 interface KeyCardProps {
   title: string;
@@ -16,7 +16,7 @@ export default function KeyCard({
   onDownload,
 }: KeyCardProps) {
   return (
-    <section className="overflow-hidden rounded-lg border border-border-primary">
+    <section className="overflow-hidden rounded-lg border border-border-primary w-140 text-text-primary">
       <div className="flex items-center justify-between gap-3 border-b border-border-primary bg-background-secondary px-4 py-3">
         <h3 className="font-semibold">{title}</h3>
 
@@ -24,9 +24,9 @@ export default function KeyCard({
           <button
             type="button"
             onClick={onCopy}
-            className="flex items-center gap-1.5 text-sm hover:opacity-70"
+            className={`flex items-center ${copied ? "gap-0.5" : "gap-1.5"} text-sm hover:opacity-70`}
           >
-            <Copy size={15} />
+            {copied ? <Check size={15} /> : <Copy size={15} />}
             {copied ? "Copied!" : "Copy"}
           </button>
 
