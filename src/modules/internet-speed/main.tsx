@@ -5,7 +5,7 @@ import { useDownload } from "./hooks/useDownload";
 import styles from "./main.css?inline";
 import ShadowModule from "../../components/ShadowModule";
 
-export default function Homepage() {
+export default function InternetSpeed() {
   const [size, setSize] = useState("32");
   const [concurrency, setConcurrency] = useState("4");
 

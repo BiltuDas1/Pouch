@@ -1,7 +1,7 @@
 import { Search } from "lucide-react";
 import GitHubIcon from "../svg/github";
 import { modules } from "../utils/loader";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import packageJson from "../../package.json";
 
@@ -12,9 +12,15 @@ export default function Home() {
   const selectedModule =
     modules.find((module) => module.name === moduleName) ?? null;
 
+  useEffect(() => {
+    document.title = selectedModule
+      ? `${selectedModule.title} | Pouch`
+      : "Pouch";
+  }, [selectedModule]);
+
   return (
     <main className="h-screen w-screen flex flex-row">
-      <aside className="h-full w-65 border-r-2 border-border-primary pl-5 pr-5 pt-4 pb-4 flex flex-col gap-4 select-none">
+      <aside className="h-full w-fit min-w-max border-r-2 border-border-primary pl-5 pr-5 pt-4 pb-4 flex flex-col gap-4 select-none">
         <section className="flex flex-col gap-4">
           <div className="flex flex-row justify-between items-center">
             <h1 className="font-sans text-text-primary text-3xl font-bold">
@@ -29,13 +35,13 @@ export default function Home() {
             <p className="text-sm">Search Anything</p>
           </div>
         </section>
-        <section id="sidebar" className="w-full h-full flex flex-col">
+        <section id="sidebar" className="w-full h-full flex flex-col gap-2.5">
           {modules.map((module) => (
             <button
               key={module.name}
               type="button"
               onClick={() => navigate(`/mod/${module.name}`)}
-              className={`w-full h-10 pr-2.5 pl-2.5 font-sans text-xl text-text-menu rounded-md flex items-center cursor-pointer ${selectedModule?.name === module.name ? "bg-menu-selection" : "hover:bg-menu-selection"}`}
+              className={`w-full whitespace-nowrap h-10 pr-2.5 pl-2.5 font-sans text-xl text-text-menu rounded-md flex items-center cursor-pointer ${selectedModule?.name === module.name ? "bg-menu-selection" : "hover:bg-menu-selection"}`}
             >
               {module.title}
             </button>
