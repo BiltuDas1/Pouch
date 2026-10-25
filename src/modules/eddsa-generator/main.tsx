@@ -1,0 +1,121 @@
+import { useState } from "react";
+import { RefreshCw, Download } from "lucide-react";
+import styles from "./main.css?inline";
+import ShadowModule from "../../components/ShadowModule";
+import KeyCard from "./components/KeyCard";
+import { generateEd25519Keys } from "./lib/keygen";
+import { downloadText } from "./lib/download";
+import type { GeneratedKeys } from "./types";
+
+export default function EdDSAKeyGenerator() {
+  const [keys, setKeys] = useState<GeneratedKeys | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [copied, setCopied] = useState("");
+
+  async function generateKeys() {
+    setLoading(true);
+    setError("");
+    setCopied("");
+
+    try {
+      setKeys(await generateEd25519Keys());
+    } catch (err) {
+      setError(
+        err instanceof Error ? err.message : "Failed to generate the key pair.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function copyKey(label: string, value: string) {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(label);
+      window.setTimeout(() => setCopied(""), 1500);
+    } catch {
+      setError("Could not access the clipboard. Check browser permissions.");
+    }
+  }
+
+  return (
+    <ShadowModule css={styles}>
+      <div className="mx-auto w-full max-w-4xl space-y-6">
+        <header className="space-y-2">
+          <p className="text-sm text-text-secondary">
+            Generate an Ed25519 public and private key pair directly in your
+            browser.
+          </p>
+        </header>
+
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            onClick={generateKeys}
+            disabled={loading}
+            className="flex items-center gap-2 rounded-md bg-accent-primary px-4 py-2.5 font-medium text-white hover:bg-accent-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <RefreshCw size={17} className={loading ? "animate-spin" : ""} />
+            {loading
+              ? "Generating..."
+              : keys
+                ? "Generate New Keys"
+                : "Generate Keys"}
+          </button>
+
+          {keys && (
+            <button
+              type="button"
+              onClick={() =>
+                downloadText(
+                  "ed25519-keys.txt",
+                  `PUBLIC KEY\n${keys.publicKey}\n\nPRIVATE KEY\n${keys.privateKey}\n`,
+                )
+              }
+              className="flex items-center gap-2 rounded-md border border-border-primary px-4 py-2.5"
+            >
+              <Download size={17} />
+              Download Both
+            </button>
+          )}
+        </div>
+
+        {error && (
+          <p role="alert" className="text-sm text-status-error">
+            {error}
+          </p>
+        )}
+
+        {keys && (
+          <div className="space-y-5">
+            <KeyCard
+              title="Public Key"
+              value={keys.publicKey}
+              copied={copied === "public"}
+              onCopy={() => copyKey("public", keys.publicKey)}
+              onDownload={() =>
+                downloadText("ed25519-public.pem", keys.publicKey)
+              }
+            />
+
+            <KeyCard
+              title="Private Key"
+              value={keys.privateKey}
+              copied={copied === "private"}
+              onCopy={() => copyKey("private", keys.privateKey)}
+              onDownload={() =>
+                downloadText("ed25519-private.pem", keys.privateKey)
+              }
+            />
+
+            <p className="text-sm text-text-secondary">
+              Keep your private key secret. Anyone who obtains it can generate
+              signatures as the key owner.
+            </p>
+          </div>
+        )}
+      </div>
+    </ShadowModule>
+  );
+}
