@@ -50,6 +50,10 @@ export default function Home() {
           id="mainContainer"
           className="flex-1 min-h-0 overflow-auto p-4"
         >
+          <div className="w-full h-8 text-2xl text-white font-bold text-center">
+            <p>{selectedModule?.title ?? "All Tools"}</p>
+          </div>
+
           {moduleName && !selectedModule ? (
             <p className="font-sans text-xl text-text-primary text-center">
               Module not found.
