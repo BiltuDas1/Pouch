@@ -41,20 +41,13 @@ export default function EdDSAKeyGenerator() {
 
   return (
     <ShadowModule css={styles}>
-      <div className="mx-auto w-full max-w-4xl space-y-6">
-        <header className="space-y-2">
-          <p className="text-sm text-text-secondary">
-            Generate an Ed25519 public and private key pair directly in your
-            browser.
-          </p>
-        </header>
-
-        <div className="flex flex-wrap items-center gap-3">
+      <section className="mx-auto w-full max-w-4xl space-y-6 mt-8">
+        <div className="flex flex-wrap justify-center items-center gap-3">
           <button
             type="button"
             onClick={generateKeys}
             disabled={loading}
-            className="flex items-center gap-2 rounded-md bg-accent-primary px-4 py-2.5 font-medium text-white hover:bg-accent-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex items-center gap-2 rounded-md bg-button-primary px-4 py-2.5 font-medium text-dark hover:bg-button-hover disabled:cursor-not-allowed disabled:opacity-50"
           >
             <RefreshCw size={17} className={loading ? "animate-spin" : ""} />
             {loading
@@ -70,10 +63,10 @@ export default function EdDSAKeyGenerator() {
               onClick={() =>
                 downloadText(
                   "ed25519-keys.txt",
-                  `PUBLIC KEY\n${keys.publicKey}\n\nPRIVATE KEY\n${keys.privateKey}\n`,
+                  `${keys.privateKey}\n${keys.publicKey}`,
                 )
               }
-              className="flex items-center gap-2 rounded-md border border-border-primary px-4 py-2.5"
+              className="flex items-center gap-2 rounded-md border bg-background-secondary border-border-primary text-white px-4 py-2.5"
             >
               <Download size={17} />
               Download Both
@@ -82,23 +75,13 @@ export default function EdDSAKeyGenerator() {
         </div>
 
         {error && (
-          <p role="alert" className="text-sm text-status-error">
+          <p role="alert" className="text-sm text-status-error text-center">
             {error}
           </p>
         )}
 
         {keys && (
-          <div className="space-y-5">
-            <KeyCard
-              title="Public Key"
-              value={keys.publicKey}
-              copied={copied === "public"}
-              onCopy={() => copyKey("public", keys.publicKey)}
-              onDownload={() =>
-                downloadText("ed25519-public.pem", keys.publicKey)
-              }
-            />
-
+          <div className="space-y-5 flex flex-col items-center">
             <KeyCard
               title="Private Key"
               value={keys.privateKey}
@@ -109,13 +92,23 @@ export default function EdDSAKeyGenerator() {
               }
             />
 
-            <p className="text-sm text-text-secondary">
+            <KeyCard
+              title="Public Key"
+              value={keys.publicKey}
+              copied={copied === "public"}
+              onCopy={() => copyKey("public", keys.publicKey)}
+              onDownload={() =>
+                downloadText("ed25519-public.pem", keys.publicKey)
+              }
+            />
+
+            <p className="text-sm text-text-secondary text-center">
               Keep your private key secret. Anyone who obtains it can generate
               signatures as the key owner.
             </p>
           </div>
         )}
-      </div>
+      </section>
     </ShadowModule>
   );
 }

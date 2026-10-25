@@ -7,8 +7,8 @@
   --color-text-secondary: #a1a194;
   --color-text-menu: #d9d9d9;
   --color-menu-selection: #2e2f2f;
-
-  --color-accent-primary: #2563eb;
-  --color-accent-primary-hover: #1d4ed8;
+  --color-button-primary: #e5e5e5;
+  --color-button-hover: #bcbcbc;
+  --color-dark: #0a0a0a;
   --color-status-error: #f87171;
 }
