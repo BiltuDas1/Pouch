@@ -35,25 +35,25 @@ export default function Home() {
         <aside className="h-full w-fit min-w-max border-r-2 border-border-primary pl-5 pr-5 pt-4 pb-4 flex flex-col gap-4 select-none">
           <section className="flex flex-col gap-4">
             <div className="flex flex-row justify-between items-center">
-              <h1 className="font-sans text-text-primary text-3xl font-bold">
+              <h1 className="font-sans text-text-primary text-2xl font-bold">
                 Pouch
               </h1>
-              <p className="font-mono text-text-secondary text-xl">
+              <p className="font-mono text-text-secondary text-sm">
                 v{packageJson.version}
               </p>
             </div>
-            <div className="font-sans text-text-secondary bg-background-secondary pl-2.5 pr-2.5 w-full h-10.5 rounded-md flex flex-row items-center gap-2.5 border border-border-primary">
+            <div className="font-sans text-text-secondary bg-background-secondary px-2.5 w-full h-9 rounded-md flex flex-row items-center gap-2.5 border border-border-primary hover:opacity-80 hover:cursor-pointer">
               <Search size={20} />
               <p className="text-sm">Search Anything</p>
             </div>
           </section>
-          <section id="sidebar" className="w-full h-full flex flex-col gap-2.5">
+          <section id="sidebar" className="w-full h-full flex flex-col gap-1">
             {modules.map((module) => (
               <button
                 key={module.name}
                 type="button"
                 onClick={() => navigate(`/mod/${module.name}`)}
-                className={`w-full whitespace-nowrap h-10 pr-2.5 pl-2.5 font-sans text-xl text-text-menu rounded-md flex items-center cursor-pointer ${selectedModule?.name === module.name ? "bg-menu-selection" : "hover:bg-menu-selection"}`}
+                className={`w-full whitespace-nowrap h-8 pr-2.5 pl-2.5 font-sans text-base text-text-menu rounded-md flex items-center cursor-pointer ${selectedModule?.name === module.name ? "bg-menu-selection" : "hover:bg-menu-selection"}`}
               >
                 {module.title}
               </button>
