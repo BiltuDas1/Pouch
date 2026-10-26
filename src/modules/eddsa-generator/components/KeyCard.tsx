@@ -24,7 +24,7 @@ export default function KeyCard({
           <button
             type="button"
             onClick={onCopy}
-            className={`flex items-center ${copied ? "gap-0.5" : "gap-1.5"} text-sm hover:opacity-70`}
+            className={`flex items-center ${copied ? "gap-0.5" : "gap-1.5"} text-sm hover:opacity-70 outline-none focus:opacity-70`}
           >
             {copied ? <Check size={15} /> : <Copy size={15} />}
             {copied ? "Copied!" : "Copy"}
@@ -33,7 +33,7 @@ export default function KeyCard({
           <button
             type="button"
             onClick={onDownload}
-            className="flex items-center gap-1.5 text-sm hover:opacity-70"
+            className="flex items-center gap-1.5 text-sm hover:opacity-70 outline-none focus:opacity-70"
           >
             <Download size={15} />
             Download

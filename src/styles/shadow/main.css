@@ -1,0 +1,4 @@
+:host,
+:host * {
+  @apply cursor-none!;
+}

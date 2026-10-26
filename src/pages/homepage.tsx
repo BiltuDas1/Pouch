@@ -4,6 +4,7 @@ import { modules } from "../utils/loader";
 import { Suspense, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import packageJson from "../../package.json";
+import CustomCursor from "../components/CustomCursor";
 
 export default function Home() {
   const { moduleName } = useParams();
@@ -30,6 +31,7 @@ export default function Home() {
           "Explore free developer utilities in one place with Pouch"
         }
       />
+      <CustomCursor />
 
       <main className="h-screen w-screen flex flex-row">
         <aside className="h-full w-fit min-w-max border-r-2 border-border-primary pl-5 pr-5 pt-4 pb-4 flex flex-col gap-4 select-none">
@@ -42,7 +44,7 @@ export default function Home() {
                 v{packageJson.version}
               </p>
             </div>
-            <div className="font-sans text-text-secondary bg-background-secondary px-2.5 w-full h-9 rounded-md flex flex-row items-center gap-2.5 border border-border-primary hover:opacity-80 hover:cursor-pointer">
+            <div className="font-sans text-text-secondary bg-background-secondary px-2.5 w-full h-9 rounded-md flex flex-row items-center gap-2.5 border border-border-primary hover:opacity-80">
               <Search size={20} />
               <p className="text-sm">Search Anything</p>
             </div>
@@ -53,7 +55,7 @@ export default function Home() {
                 key={module.name}
                 type="button"
                 onClick={() => navigate(`/mod/${module.name}`)}
-                className={`w-full whitespace-nowrap h-8 pr-2.5 pl-2.5 font-sans text-base text-text-menu rounded-md flex items-center cursor-pointer ${selectedModule?.name === module.name ? "bg-menu-selection" : "hover:bg-menu-selection"}`}
+                className={`w-full whitespace-nowrap h-8 pr-2.5 pl-2.5 font-sans text-base text-text-menu rounded-md flex items-center outline-none focus:bg-menu-selection ${selectedModule?.name === module.name ? "bg-menu-selection" : "hover:bg-menu-selection"}`}
               >
                 {module.title}
               </button>
@@ -62,7 +64,12 @@ export default function Home() {
         </aside>
         <section className="h-full w-full flex flex-col">
           <nav className="h-15 w-full border-b-2 border-border-primary flex flex-row items-center justify-end gap-2.5 pr-3.5 pl-3.5">
-            <GitHubIcon className="h-6.5 w-6.5 fill-white" />
+            <GitHubIcon
+              className="h-6.5 w-6.5 fill-white hover:opacity-80"
+              onClick={() =>
+                window.open("https://github.com/BiltuDas1/Pouch", "_blank")
+              }
+            />
           </nav>
           <section
             id="mainContainer"
