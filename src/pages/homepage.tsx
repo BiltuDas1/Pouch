@@ -1,14 +1,16 @@
 import { Search } from "lucide-react";
 import GitHubIcon from "../svg/github";
 import { modules } from "../utils/loader";
-import { Suspense, useEffect } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import packageJson from "../../package.json";
 import CustomCursor from "../components/CustomCursor";
+import SearchBox from "../components/SearchBox";
 
 export default function Home() {
   const { moduleName } = useParams();
   const navigate = useNavigate();
+  const [isSearchVisible, setSearchVisibilty] = useState<boolean>(false);
 
   const selectedModule =
     modules.find((module) => module.name === moduleName) ?? null;
@@ -33,6 +35,11 @@ export default function Home() {
       />
       <CustomCursor />
 
+      {isSearchVisible ? (
+        <SearchBox setSearchBoxState={setSearchVisibilty} />
+      ) : (
+        <></>
+      )}
       <main className="h-screen w-screen flex flex-row">
         <aside className="h-full w-fit min-w-max border-r-2 border-border-primary pl-5 pr-5 pt-4 pb-4 flex flex-col gap-4 select-none">
           <section className="flex flex-col gap-4">
@@ -44,7 +51,10 @@ export default function Home() {
                 v{packageJson.version}
               </p>
             </div>
-            <div className="font-sans text-text-secondary bg-background-secondary px-2.5 w-full h-9 rounded-md flex flex-row items-center gap-2.5 border border-border-primary hover:opacity-80">
+            <div
+              className={`font-sans text-text-secondary bg-background-secondary px-2.5 w-full h-9 rounded-md flex flex-row items-center gap-2.5 border border-border-primary ${isSearchVisible ? "" : "hover:opacity-80"}`}
+              onClick={() => setSearchVisibilty(true)}
+            >
               <Search size={20} />
               <p className="text-sm">Search Anything</p>
             </div>
