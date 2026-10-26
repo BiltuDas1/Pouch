@@ -10,5 +10,9 @@
   },
   "title": "Internet Test",
   "description": "Test your internet by downloading samples",
-  "keywords": []
+  "keywords": [
+    "internet",
+    "speed",
+    "network"
+  ]
 }

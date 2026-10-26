@@ -10,13 +10,16 @@
     "preview": "vite preview",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "generate:sitemap": "tsx --env-file=.env scripts/generate-sitemap.ts"
+    "generate:sitemap": "tsx --env-file=.env scripts/generate-sitemap.ts",
+    "zip": "pnpm build && cd dist/ && bestzip --level 9 ../pouch.zip *"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "fuse.js": "^7.5.0",
     "lucide-react": "^1.61.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-loader-spinner": "^8.0.2",
     "react-router": "^8.5.0",
     "tailwindcss": "^4.3.3"
   },
@@ -26,6 +29,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.1.0",
+    "bestzip": "^4.0.3",
     "eslint": "^10.9.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.4",

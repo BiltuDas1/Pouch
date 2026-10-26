@@ -11,5 +11,9 @@
   },
   "title": "Ed25519 Generator",
   "description": "Generate Ed25519 (EdDSA) key",
-  "keywords": []
+  "keywords": [
+    "security",
+    "encryption",
+    "asymmetric key"
+  ]
 }

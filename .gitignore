@@ -27,3 +27,6 @@ dist-ssr
 
 # Sitemap
 /public/sitemap.xml
+
+# Archive
+*.zip
