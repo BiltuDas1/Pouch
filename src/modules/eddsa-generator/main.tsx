@@ -40,14 +40,14 @@ export default function EdDSAKeyGenerator() {
   }
 
   return (
-    <ShadowModule css={styles}>
+    <ShadowModule css={styles} includeShadowStyles>
       <section className="mx-auto w-full max-w-4xl space-y-6 mt-8">
         <div className="flex flex-wrap justify-center items-center gap-3">
           <button
             type="button"
             onClick={generateKeys}
             disabled={loading}
-            className="flex items-center gap-2 rounded-md bg-button-primary px-4 py-2.5 font-medium text-dark hover:bg-button-hover disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex items-center gap-2 rounded-md bg-button-primary px-4 py-2.5 font-medium text-dark hover:bg-button-hover disabled:cursor-not-allowed disabled:opacity-50 focus:outline-4 outline-menu-selection"
           >
             <RefreshCw size={17} className={loading ? "animate-spin" : ""} />
             {loading
@@ -66,7 +66,7 @@ export default function EdDSAKeyGenerator() {
                   `${keys.privateKey}\n${keys.publicKey}`,
                 )
               }
-              className="flex items-center gap-2 rounded-md border bg-background-secondary border-border-primary text-white px-4 py-2.5"
+              className="flex items-center gap-2 rounded-md border bg-background-secondary border-border-primary text-white px-4 py-2.5 focus:outline-4 outline-menu-selection"
             >
               <Download size={17} />
               Download Both

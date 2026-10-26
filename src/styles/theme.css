@@ -1,3 +1,11 @@
 body {
   @apply bg-background-primary;
 }
+
+body ::selection {
+  @apply bg-select text-select-text;
+}
+
+* {
+  @apply cursor-none!;
+}
