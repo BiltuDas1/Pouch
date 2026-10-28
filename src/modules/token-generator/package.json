@@ -1,0 +1,44 @@
+{
+  "name": "@pouch/token-generator",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@headlessui/react": "^2.2.10"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "title": "Token Generator",
+  "description": "Generate random tokens using your choice of uppercase letters, lowercase letters, numbers, and symbols. Customize the token length, create multiple tokens, and copy the results for passwords, identifiers, test data, and other development tasks.",
+  "keywords": [
+    "token",
+    "token generator",
+    "random token",
+    "random string",
+    "string generator",
+    "random string generator",
+    "secure token",
+    "secret token",
+    "api token",
+    "api key",
+    "password generator",
+    "random password",
+    "uppercase",
+    "lowercase",
+    "letters",
+    "numbers",
+    "numeric",
+    "digits",
+    "special characters",
+    "symbols",
+    "alphanumeric",
+    "hexadecimal",
+    "developer tools",
+    "test data",
+    "identifier",
+    "nonce",
+    "cryptographic random"
+  ]
+}
