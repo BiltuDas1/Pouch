@@ -16,7 +16,7 @@ interface ModuleMetadata {
 export interface PouchModule extends ModuleMetadata {
   name: string;
   component: LazyExoticComponent<ComponentType>;
-  icon?: LazyExoticComponent<ModuleIcon>;
+  icon: LazyExoticComponent<ModuleIcon>;
 }
 
 const discoveredComponents = import.meta.glob<{

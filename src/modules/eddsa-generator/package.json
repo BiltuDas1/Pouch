@@ -10,10 +10,33 @@
     "lucide-react": "^1.61.0"
   },
   "title": "Ed25519 Generator",
-  "description": "Generate Ed25519 (EdDSA) key",
+  "description": "Generate Ed25519 public and private key pairs for modern public-key cryptography. Ed25519 is a fast digital signature algorithm based on EdDSA, commonly used for secure authentication, SSH keys, and verifying digital signatures",
   "keywords": [
+    "ed25519",
+    "eddsa",
+    "key generator",
+    "key pair generator",
+    "public key",
+    "private key",
+    "public private key",
+    "cryptography",
+    "asymmetric cryptography",
+    "asymmetric key",
+    "digital signature",
+    "signature generator",
+    "signature verification",
+    "ssh key",
+    "ssh key generator",
     "security",
     "encryption",
-    "asymmetric key"
+    "authentication",
+    "secure key generation",
+    "public key cryptography",
+    "cryptographic keys",
+    "signing key",
+    "verify signature",
+    "elliptic curve cryptography",
+    "edwards curve",
+    "key pair"
   ]
 }

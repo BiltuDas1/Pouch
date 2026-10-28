@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router";
 import packageJson from "../../package.json";
 import CustomCursor from "../components/CustomCursor";
 import SearchBox from "../components/SearchBox";
+import AllModules from "../components/ListAllModules";
 
 export default function Home() {
   const { moduleName } = useParams();
@@ -44,7 +45,10 @@ export default function Home() {
         <aside className="h-full w-fit min-w-max border-r-2 border-border-primary pl-5 pr-5 pt-4 pb-4 flex flex-col gap-4 select-none">
           <section className="flex flex-col gap-4">
             <div className="flex flex-row justify-between items-center">
-              <h1 className="font-sans text-text-primary text-2xl font-bold">
+              <h1
+                className="font-sans text-text-primary text-2xl font-bold hover:opacity-70"
+                onClick={() => navigate("/")}
+              >
                 Pouch
               </h1>
               <p className="font-mono text-text-secondary text-sm">
@@ -85,7 +89,7 @@ export default function Home() {
             id="mainContainer"
             className="flex-1 min-h-0 overflow-auto p-4"
           >
-            <div className="w-full h-8 text-2xl text-white font-bold text-center">
+            <div className="w-full h-8 text-2xl text-white font-bold text-center mb-4">
               <p>{selectedModule?.title ?? "All Tools"}</p>
             </div>
 
@@ -103,7 +107,9 @@ export default function Home() {
               >
                 <selectedModule.component />
               </Suspense>
-            ) : null}
+            ) : (
+              <AllModules />
+            )}
           </section>
         </section>
       </main>
