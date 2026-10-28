@@ -1,4 +1,11 @@
-import { lazy, type ComponentType, type LazyExoticComponent } from "react";
+import {
+  lazy,
+  type ComponentType,
+  type LazyExoticComponent,
+  type SVGProps,
+} from "react";
+
+export type ModuleIcon = ComponentType<SVGProps<SVGSVGElement>>;
 
 interface ModuleMetadata {
   title: string;
@@ -9,11 +16,16 @@ interface ModuleMetadata {
 export interface PouchModule extends ModuleMetadata {
   name: string;
   component: LazyExoticComponent<ComponentType>;
+  icon?: LazyExoticComponent<ModuleIcon>;
 }
 
 const discoveredComponents = import.meta.glob<{
   default: ComponentType;
 }>("../modules/*/main.tsx");
+
+const discoveredIcons = import.meta.glob<{
+  default: ModuleIcon;
+}>("../modules/*/icon.tsx");
 
 const discoveredMetadata = import.meta.glob<ModuleMetadata>(
   "../modules/*/package.json",
@@ -22,6 +34,8 @@ const discoveredMetadata = import.meta.glob<ModuleMetadata>(
     import: "default",
   },
 );
+
+const DefaultIcon = lazy(() => import("../svg/default"));
 
 export const modules: PouchModule[] = Object.entries(discoveredComponents).map(
   ([path, loader]) => {
@@ -41,12 +55,16 @@ export const modules: PouchModule[] = Object.entries(discoveredComponents).map(
       );
     }
 
+    const iconPath = `../modules/${name}/icon.tsx`;
+    const iconLoader = discoveredIcons[iconPath];
+
     return {
       name,
       title: metadata.title,
       description: metadata.description ?? null,
       keywords: metadata.keywords ?? null,
       component: lazy(loader),
+      icon: iconLoader ? lazy(iconLoader) : DefaultIcon,
     };
   },
 );

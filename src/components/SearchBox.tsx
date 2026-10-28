@@ -1,5 +1,5 @@
 import { ChevronsUpDownIcon, Search } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { Bars, Oval } from "react-loader-spinner";
 import { searchModules } from "../utils/search";
 import { useNavigate } from "react-router";
@@ -107,14 +107,21 @@ export default function SearchBox({ setSearchBoxState }: SearchBoxProps) {
             {results.map(({ item }) => (
               <button
                 key={item.name}
-                className="w-full h-fit hover:bg-background-secondary hover:outline outline-border-primary focus:bg-background-secondary focus:outline rounded-md px-2 py-1 flex flex-col items-start"
+                className="w-full h-fit hover:bg-background-secondary hover:outline outline-border-primary focus:bg-background-secondary focus:outline rounded-md px-2 py-1 flex flex-row justify-start items-center gap-2.5"
                 onClick={() => {
                   setDestination(`/mod/${item.name}`);
                   closeSearchBox();
                 }}
               >
-                <h3 className="text-lg">{item.title}</h3>
-                <p className="text-sm">{item.description}</p>
+                {item.icon && (
+                  <Suspense fallback={null}>
+                    <item.icon height={36} width={36} />
+                  </Suspense>
+                )}
+                <div className="flex flex-col items-start">
+                  <h3 className="text-lg">{item.title}</h3>
+                  <p className="text-sm">{item.description}</p>
+                </div>
               </button>
             ))}
           </div>
