@@ -113,14 +113,13 @@ export default function SearchBox({ setSearchBoxState }: SearchBoxProps) {
                   closeSearchBox();
                 }}
               >
-                {item.icon && (
-                  <Suspense fallback={null}>
-                    <item.icon height={36} width={36} />
-                  </Suspense>
-                )}
-                <div className="flex flex-col items-start">
+                <Suspense>
+                  <item.icon height={36} width={36} />
+                </Suspense>
+
+                <div className="flex min-w-0 w-full flex-col items-start text-left">
                   <h3 className="text-lg">{item.title}</h3>
-                  <p className="text-sm">{item.description}</p>
+                  <p className="text-sm truncate w-full">{item.description}</p>
                 </div>
               </button>
             ))}

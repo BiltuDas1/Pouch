@@ -30,7 +30,7 @@ export default function InternetSpeed() {
   return (
     <ShadowModule css={styles} includeShadowStyles>
       <section className="w-full h-full flex flex-row justify-center items-center">
-        <div className="bg-section border border-section-border mt-4 p-6 w-76 rounded-2xl">
+        <div className="bg-section border border-section-border p-6 w-76 rounded-2xl">
           <DownloadControls
             size={size}
             concurrency={concurrency}

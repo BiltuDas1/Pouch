@@ -41,7 +41,7 @@ export default function EdDSAKeyGenerator() {
 
   return (
     <ShadowModule css={styles} includeShadowStyles>
-      <section className="mx-auto w-full max-w-4xl space-y-6 mt-8">
+      <section className="mx-auto w-full max-w-4xl space-y-6">
         <div className="flex flex-wrap justify-center items-center gap-3">
           <button
             type="button"
