@@ -6,7 +6,7 @@ export default function AllModules() {
   const navigate = useNavigate();
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,14rem)] gap-4">
+    <div className="grid grid-cols-[repeat(auto-fill,14rem)] gap-4 justify-center md:justify-normal">
       {modules.map((module) => (
         <ul
           key={module.name}

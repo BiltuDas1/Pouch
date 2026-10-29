@@ -42,7 +42,7 @@ export default function Home() {
         <></>
       )}
       <main className="h-screen w-screen flex flex-row">
-        <aside className="h-full w-fit min-w-max border-r-2 border-border-primary pl-5 pr-5 pt-4 pb-4 flex flex-col gap-4 select-none">
+        <aside className="h-full w-fit min-w-max border-r-2 border-border-primary pl-5 pr-5 pt-4 pb-4 hidden md:flex flex-col gap-4 select-none">
           <section className="flex flex-col gap-4">
             <div className="flex flex-row justify-between items-center">
               <h1
@@ -77,13 +77,27 @@ export default function Home() {
           </section>
         </aside>
         <section className="h-full w-full flex flex-col">
-          <nav className="h-15 w-full border-b-2 border-border-primary flex flex-row items-center justify-end gap-2.5 pr-3.5 pl-3.5">
-            <GitHubIcon
-              className="h-6.5 w-6.5 fill-white hover:opacity-80"
-              onClick={() =>
-                window.open("https://github.com/BiltuDas1/Pouch", "_blank")
-              }
-            />
+          <nav className="h-15 w-full border-b-2 border-border-primary flex flex-row items-center justify-between md:justify-end gap-2.5 px-3.5">
+            <h1
+              className="font-sans text-text-primary text-2xl font-bold hover:opacity-70 md:hidden"
+              onClick={() => navigate("/")}
+            >
+              Pouch
+            </h1>
+            <div className="flex flex-row items-center justify-end gap-3">
+              <GitHubIcon
+                className="h-6.5 w-6.5 fill-white hover:opacity-80"
+                onClick={() =>
+                  window.open("https://github.com/BiltuDas1/Pouch", "_blank")
+                }
+              />
+              <Search
+                color="#ffffff"
+                size={28}
+                onClick={() => setSearchVisibilty(true)}
+                className="hover:opacity-70 md:hidden"
+              />
+            </div>
           </nav>
           <section
             id="mainContainer"
