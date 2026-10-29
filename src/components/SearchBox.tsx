@@ -56,7 +56,7 @@ export default function SearchBox({ setSearchBoxState }: SearchBoxProps) {
       }}
     >
       <div
-        className={`absolute top-[10vh] h-fit w-142 flex flex-col bg-background-primary rounded-lg ${closing ? "search-box-exit" : "search-box-enter"}`}
+        className={`absolute top-[10vh] h-fit w-[90vw] md:w-142 flex flex-col bg-background-primary rounded-lg ${closing ? "search-box-exit" : "search-box-enter"}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="w-full h-16 px-2.5 text-text-secondary flex flex-row items-center gap-2.5">

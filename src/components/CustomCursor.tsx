@@ -3,6 +3,23 @@ import { useEffect, useState } from "react";
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [visible, setVisible] = useState(false);
+  const [hasFinePointer, setHasFinePointer] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+    setHasFinePointer(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setHasFinePointer(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -66,7 +83,7 @@ export default function CustomCursor() {
         left: position.x,
         top: position.y,
         transform: "translate(-50%, -50%)",
-        display: visible ? "block" : "none",
+        display: hasFinePointer && visible ? "block" : "none",
       }}
     />
   );
