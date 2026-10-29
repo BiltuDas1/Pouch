@@ -1,0 +1,32 @@
+{
+  "name": "@pouch/chmod-calculator",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.3.3",
+    "lucide-react": "^1.61.0"
+  },
+  "title": "Permission Calculator",
+  "description": "Calculate Linux and Unix file permissions visually. Toggle read, write, and execute permissions for owner, group, and others, then view the equivalent octal and symbolic chmod notation.",
+  "keywords": [
+    "chmod",
+    "chmod calculator",
+    "file permissions",
+    "linux permissions",
+    "unix permissions",
+    "octal permissions",
+    "symbolic permissions",
+    "rwx",
+    "read write execute",
+    "permission calculator",
+    "755",
+    "644",
+    "linux",
+    "unix",
+    "server administration",
+    "file mode"
+  ]
+}
