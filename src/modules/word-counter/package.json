@@ -1,0 +1,32 @@
+{
+  "name": "@pouch/word-counter",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.3.3",
+    "lucide-react": "^1.61.0"
+  },
+  "title": "Word Counter",
+  "description": "Count words, spaces, and total characters in your text. See character totals including spaces, track whitespace, and check text length instantly as you type or paste content.",
+  "keywords": [
+    "word counter",
+    "character counter",
+    "character count",
+    "space counter",
+    "count spaces",
+    "total characters",
+    "word count",
+    "text counter",
+    "text analyzer",
+    "letter count",
+    "whitespace counter",
+    "text length",
+    "writing tool",
+    "words",
+    "spaces",
+    "characters"
+  ]
+}
