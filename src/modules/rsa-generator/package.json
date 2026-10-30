@@ -1,0 +1,40 @@
+{
+  "name": "@pouch/rsa-generator",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.3.3",
+    "lucide-react": "^1.61.0"
+  },
+  "title": "RSA Key Generator",
+  "description": "Generate RSA public and private key pairs in your browser. Choose RSA key sizes and select RSA-OAEP for encryption or RSA-PSS for digital signatures, then copy or download your keys in PEM format.",
+  "keywords": [
+    "rsa",
+    "rsa key generator",
+    "rsa key pair",
+    "public key",
+    "private key",
+    "public private key",
+    "asymmetric cryptography",
+    "cryptography",
+    "encryption",
+    "decryption",
+    "rsa-oaep",
+    "rsa-pss",
+    "digital signature",
+    "signature verification",
+    "pem",
+    "private pem",
+    "public pem",
+    "key generation",
+    "2048 bit",
+    "3072 bit",
+    "4096 bit",
+    "security",
+    "cryptographic keys",
+    "public key cryptography"
+  ]
+}
