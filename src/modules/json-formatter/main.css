@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark: #0a0a0a;
+  --color-section: #171717;
+  --color-section-border: #2e2f2f;
+  --color-subtext: #a1a194;
+  --color-text: #fafafa;
+  --color-btn: #e5e5e5;
+  --color-btn-hover: #bcbcbc;
+  --color-status-error: #f87171;
+}
+
+.json-line {
+  display: flex;
+  min-height: 1.75rem;
+  align-items: center;
+  white-space: pre;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.75rem;
+}
+
+.json-toggle,
+.json-toggle-spacer {
+  display: inline-flex;
+  width: 1.25rem;
+  height: 1.5rem;
+  flex: 0 0 1.25rem;
+  align-items: center;
+  justify-content: center;
+  color: #a1a194;
+}
+
+.json-toggle:hover {
+  color: #fafafa;
+}
+
+.json-container-icon {
+  margin-right: 0.35rem;
+  flex: 0 0 auto;
+  color: #a1a194;
+}
+
+.json-key {
+  margin-right: 0.45rem;
+  color: #93c5fd;
+}
+
+.json-bracket {
+  color: #a1a194;
+}
+
+.json-summary {
+  margin-left: 0.4rem;
+  color: #737373;
+  font-size: 0.75rem;
+}
+
+.json-summary:hover {
+  color: #d4d4d4;
+}
+
+.json-value {
+  overflow-wrap: anywhere;
+}
+
+.json-string {
+  color: #86efac;
+}
+
+.json-number {
+  color: #fcd34d;
+}
+
+.json-boolean {
+  color: #c4b5fd;
+}
+
+.json-null {
+  color: #a1a1aa;
+}
