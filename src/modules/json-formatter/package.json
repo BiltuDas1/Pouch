@@ -1,0 +1,31 @@
+{
+  "name": "@pouch/json-formatter",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.3.3",
+    "lucide-react": "^1.61.0"
+  },
+  "title": "JSON Formatter",
+  "description": "Parse and format JSON with single-quoted or double-quoted strings. Organize output with two-space indentation, expand or collapse nested objects and arrays, and copy valid formatted JSON.",
+  "keywords": [
+    "json",
+    "json parser",
+    "json formatter",
+    "json beautifier",
+    "json validator",
+    "format json",
+    "pretty print json",
+    "json viewer",
+    "json tree",
+    "collapse json",
+    "expand json",
+    "single quotes",
+    "double quotes",
+    "json editor",
+    "developer tools"
+  ]
+}
