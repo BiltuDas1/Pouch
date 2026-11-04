@@ -13,5 +13,17 @@
   },
   "title": "Image Metadata",
   "description": "Inspect image metadata and selectively remove supported metadata groups locally without recompressing image data.",
-  "keywords": ["image metadata", "EXIF", "GPS", "XMP", "IPTC", "ICC", "metadata remover", "image privacy", "JPEG", "PNG", "WebP"]
+  "keywords": [
+    "image metadata",
+    "EXIF",
+    "GPS",
+    "XMP",
+    "IPTC",
+    "ICC",
+    "metadata remover",
+    "image privacy",
+    "JPEG",
+    "PNG",
+    "WebP"
+  ]
 }
