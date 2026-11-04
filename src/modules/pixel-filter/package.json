@@ -1,0 +1,24 @@
+{
+  "name": "@pouch/pixel-filter",
+  "version": "0.0.0",
+  "private": true,
+  "title": "Pixel Filter",
+  "description": "Inspect image colors and create transparent masks using independent RGB threshold ranges.",
+  "keywords": [
+    "image",
+    "pixel",
+    "RGB",
+    "RGBA",
+    "HEX",
+    "color filter",
+    "background remover",
+    "transparency",
+    "image processing"
+  ],
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.3.3",
+    "lucide-react": "^1.61.0"
+  }
+}
