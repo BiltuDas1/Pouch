@@ -56,17 +56,17 @@ Format:
 
 ### Valid Types
 
-* `feat`: A new feature.
-* `fix`: A bug fix.
-* `docs`: Documentation changes.
-* `style`: Formatting or styling changes.
-* `refactor`: Code restructuring without feature or bug changes.
-* `test`: Adding or updating tests.
-* `chore`: Maintenance tasks.
-* `build`: Build system changes.
-* `ci`: CI/CD configuration changes.
-* `perf`: Performance improvements.
-* `revert`: Reverting a previous commit.
+- `feat`: A new feature.
+- `fix`: A bug fix.
+- `docs`: Documentation changes.
+- `style`: Formatting or styling changes.
+- `refactor`: Code restructuring without feature or bug changes.
+- `test`: Adding or updating tests.
+- `chore`: Maintenance tasks.
+- `build`: Build system changes.
+- `ci`: CI/CD configuration changes.
+- `perf`: Performance improvements.
+- `revert`: Reverting a previous commit.
 
 Example:
 
@@ -79,28 +79,28 @@ fix(hero): resolve mobile overflow issue
 
 ### React
 
-* Use TypeScript for all new code.
-* Prefer functional components and hooks.
-* Keep components focused and reusable.
-* Avoid unnecessary prop drilling.
-* Maintain strict typing whenever possible.
+- Use TypeScript for all new code.
+- Prefer functional components and hooks.
+- Keep components focused and reusable.
+- Avoid unnecessary prop drilling.
+- Maintain strict typing whenever possible.
 
 ### Styling
 
-* Tailwind CSS is the primary styling solution.
-* Use custom CSS only when Tailwind is not a suitable option.
-* Keep styling consistent with the established design system.
+- Tailwind CSS is the primary styling solution.
+- Use custom CSS only when Tailwind is not a suitable option.
+- Keep styling consistent with the established design system.
 
 ### Code Quality
 
-* Ensure there are no ESLint errors.
-* Format code using Prettier.
-* Remove unused imports, variables, and code before submitting changes.
+- Ensure there are no ESLint errors.
+- Format code using Prettier.
+- Remove unused imports, variables, and code before submitting changes.
 
 ## Project Confidentiality
 
 This repository contains proprietary client code, assets, and project information.
 
-* Do not share source code outside authorized contributors.
-* Do not distribute project assets without approval.
-* Respect any client confidentiality requirements and agreements.
+- Do not share source code outside authorized contributors.
+- Do not distribute project assets without approval.
+- Respect any client confidentiality requirements and agreements.

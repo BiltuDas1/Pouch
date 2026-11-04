@@ -53,7 +53,9 @@ function JsonNode({
         {name !== undefined && (
           <span className="json-key">{JSON.stringify(name)}:</span>
         )}
-        <span className={`json-value json-${value === null ? "null" : typeof value}`}>
+        <span
+          className={`json-value json-${value === null ? "null" : typeof value}`}
+        >
           {JSON.stringify(value)}
         </span>
       </div>
@@ -70,7 +72,10 @@ function JsonNode({
         {name !== undefined && (
           <span className="json-key">{JSON.stringify(name)}:</span>
         )}
-        <span className="json-bracket">{opening}{closing}</span>
+        <span className="json-bracket">
+          {opening}
+          {closing}
+        </span>
       </div>
     );
   }
@@ -274,7 +279,10 @@ export default function JsonFormatter() {
           />
 
           {error && (
-            <p role="alert" className="mt-3 rounded-md bg-status-error/10 p-3 text-sm text-status-error">
+            <p
+              role="alert"
+              className="mt-3 rounded-md bg-status-error/10 p-3 text-sm text-status-error"
+            >
               {error}
             </p>
           )}
@@ -289,8 +297,8 @@ export default function JsonFormatter() {
             Parse &amp; Format
           </button>
           <p className="mt-3 text-xs text-subtext">
-            Accepts single-quoted and double-quoted strings. Output is normalized
-            to standard JSON with 2-space indentation.
+            Accepts single-quoted and double-quoted strings. Output is
+            normalized to standard JSON with 2-space indentation.
           </p>
         </div>
 
@@ -298,7 +306,9 @@ export default function JsonFormatter() {
           <div className="min-w-0 rounded-2xl border border-section-border bg-section p-5 sm:p-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <h2 className="text-lg font-semibold text-text">Formatted output</h2>
+                <h2 className="text-lg font-semibold text-text">
+                  Formatted output
+                </h2>
                 <p className="mt-1 text-sm text-subtext">
                   Collapsible JSON tree · 2-space indentation
                 </p>
