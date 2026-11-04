@@ -77,7 +77,7 @@ export default function Home() {
           </section>
         </aside>
         <section className="min-h-screen min-w-0 flex-1 flex flex-col">
-          <nav className="h-15 w-full border-b-2 border-border-primary flex flex-row items-center justify-between md:justify-end gap-2.5 px-3.5 select-none">
+          <nav className="sticky top-0 h-15 w-full border-b-2 bg-background-primary border-border-primary flex flex-row items-center justify-between md:justify-end gap-2.5 px-3.5 select-none z-30">
             <h1
               className="font-sans text-text-primary text-2xl font-bold hover:opacity-70 md:hidden"
               onClick={() => navigate("/")}
