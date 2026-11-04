@@ -113,8 +113,8 @@ export async function inspectImage(file: File): Promise<ImageInfo> {
       iptc: true,
       jfif: true,
       ihdr: true,
-      ifd0: true,
-      ifd1: true,
+      ifd0: {},
+      ifd1: {},
       exif: true,
       gps: true,
       interop: true,
@@ -123,7 +123,6 @@ export async function inspectImage(file: File): Promise<ImageInfo> {
       multiSegment: true,
       mergeOutput: false,
       sanitize: false,
-      silentErrors: true,
     });
   } catch {
     /* Some formats have no supported metadata parser. */
@@ -393,10 +392,10 @@ async function readPngExif(bytes: Uint8Array): Promise<MetadataField[]> {
       try {
         const parsed = await exifr.parse(bytes.slice(p + 8, p + 8 + n), {
           tiff: true,
-          ifd0: true,
+          ifd0: {},
           exif: true,
           gps: true,
-          ifd1: true,
+          ifd1: {},
           mergeOutput: false,
           sanitize: false,
         });
@@ -424,10 +423,10 @@ async function readWebpMetadata(bytes: Uint8Array): Promise<MetadataField[]> {
       try {
         const parsed = await exifr.parse(payload, {
           tiff: true,
-          ifd0: true,
+          ifd0: {},
           exif: true,
           gps: true,
-          ifd1: true,
+          ifd1: {},
           mergeOutput: false,
           sanitize: false,
         });

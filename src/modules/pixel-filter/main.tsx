@@ -556,7 +556,7 @@ export default function PixelFilter() {
                           ref={zoomCanvasRef}
                           width={180}
                           height={180}
-                          className="block h-[180px] w-[180px]"
+                          className="block h-45 w-45"
                         />
                         {zoomInsideImage && (
                           <span className="absolute left-1/2 top-1 flex -translate-x-1/2 flex-col items-center gap-0.5 whitespace-nowrap rounded bg-black/80 px-2 py-1 font-mono text-[10px] font-semibold leading-tight text-white shadow">
@@ -740,7 +740,7 @@ export default function PixelFilter() {
                         onChange={(e) =>
                           setInverseAlpha(Number(e.target.value))
                         }
-                        className="w-full accent-[var(--color-button-primary)]"
+                        className="w-full accent-(--color-button-primary)"
                       />
                       <span className="flex justify-between text-[10px] text-text-secondary">
                         <span>0% · Transparent</span>
@@ -874,7 +874,7 @@ export default function PixelFilter() {
             key={copied}
             role="status"
             aria-live="polite"
-            className="pixel-copy-toast fixed bottom-5 right-5 z-[100] flex max-w-[min(28rem,calc(100vw-2.5rem))] items-center gap-2 rounded-xl border border-border-primary bg-background-secondary px-4 py-3 text-sm text-text-primary shadow-2xl"
+            className="pixel-copy-toast fixed bottom-5 right-5 z-100 flex max-w-[min(28rem,calc(100vw-2.5rem))] items-center gap-2 rounded-xl border border-border-primary bg-background-secondary px-4 py-3 text-sm text-text-primary shadow-2xl"
           >
             <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-button-primary text-dark">
               <Check size={14} strokeWidth={3} />
