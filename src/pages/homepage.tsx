@@ -41,8 +41,8 @@ export default function Home() {
       ) : (
         <></>
       )}
-      <main className="h-screen w-screen flex flex-row">
-        <aside className="h-full w-fit min-w-max border-r-2 border-border-primary pl-5 pr-5 pt-4 pb-4 hidden md:flex flex-col gap-4 select-none">
+      <main className="min-h-screen w-full flex flex-row items-stretch">
+        <aside className="sticky top-0 self-start h-screen w-fit min-w-max shrink-0 border-r-2 border-border-primary pl-5 pr-5 pt-4 pb-4 hidden md:flex flex-col gap-4 select-none">
           <section className="flex flex-col gap-4">
             <div className="flex flex-row justify-between items-center">
               <h1
@@ -76,7 +76,7 @@ export default function Home() {
             ))}
           </section>
         </aside>
-        <section className="h-full w-full flex flex-col">
+        <section className="min-h-screen min-w-0 flex-1 flex flex-col">
           <nav className="h-15 w-full border-b-2 border-border-primary flex flex-row items-center justify-between md:justify-end gap-2.5 px-3.5 select-none">
             <h1
               className="font-sans text-text-primary text-2xl font-bold hover:opacity-70 md:hidden"
@@ -99,10 +99,7 @@ export default function Home() {
               />
             </div>
           </nav>
-          <section
-            id="mainContainer"
-            className="flex-1 min-h-0 overflow-auto p-4"
-          >
+          <section id="mainContainer" className="flex-1 p-4">
             <div className="w-full h-8 text-2xl text-white font-bold text-center mb-4">
               <p>{selectedModule?.title ?? "All Tools"}</p>
             </div>
