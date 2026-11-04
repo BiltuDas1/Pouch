@@ -43,7 +43,7 @@ export default function SearchBox({ setSearchBoxState }: SearchBoxProps) {
 
   return (
     <section
-      className={`fixed w-screen h-screen ${closing ? "overlay-exit" : "overlay-enter"} flex flex-row justify-center`}
+      className={`fixed w-screen h-screen ${closing ? "overlay-exit" : "overlay-enter"} flex flex-row justify-center z-40`}
       onClick={closeSearchBox}
       onAnimationEnd={(e) => {
         if (closing && e.target === e.currentTarget) {
