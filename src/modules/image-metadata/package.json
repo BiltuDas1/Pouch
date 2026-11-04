@@ -1,0 +1,17 @@
+{
+  "name": "@pouch/image-metadata",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "exifr": "^7.1.3"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.3.3",
+    "lucide-react": "^1.61.0"
+  },
+  "title": "Image Metadata",
+  "description": "Inspect image metadata and selectively remove supported metadata groups locally without recompressing image data.",
+  "keywords": ["image metadata", "EXIF", "GPS", "XMP", "IPTC", "ICC", "metadata remover", "image privacy", "JPEG", "PNG", "WebP"]
+}
