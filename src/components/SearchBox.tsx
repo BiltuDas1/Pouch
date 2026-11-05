@@ -127,7 +127,7 @@ export default function SearchBox({ setSearchBoxState }: SearchBoxProps) {
         </div>
         <div className="w-full h-10 bg-search-background-secondary rounded-b-lg flex flex-row items-center px-2.5">
           <div className="flex flex-row gap-1 items-center">
-            <ChevronsUpDownIcon size={16} />
+            <ChevronsUpDownIcon size={16} color="var(--color-black)" />
             <p className="font-sans text-black">Navigate</p>
           </div>
         </div>

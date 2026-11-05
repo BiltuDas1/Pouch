@@ -34,6 +34,7 @@ export default function Home() {
           "Explore free developer utilities in one place with Pouch"
         }
       />
+      <meta name="color-scheme" content="dark" />
       <CustomCursor />
 
       {isSearchVisible ? (
