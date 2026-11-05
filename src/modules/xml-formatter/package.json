@@ -1,0 +1,18 @@
+{
+  "name": "@pouch/xml-formatter",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.3.3",
+    "lucide-react": "^1.61.0"
+  },
+  "title": "XML Formatter",
+  "description": "Validate, format and explore XML documents with two-space indentation, a collapsible XML tree, and copy support.",
+  "keywords": [
+    "xml", "xml formatter", "xml parser", "xml validator", "xml beautifier",
+    "pretty print xml", "xml viewer", "xml tree", "format xml", "xml editor"
+  ]
+}
