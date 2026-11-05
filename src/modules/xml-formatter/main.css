@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dark: #0a0a0a;
+  --color-section: #171717;
+  --color-section-border: #2e2f2f;
+  --color-subtext: #a1a194;
+  --color-text: #fafafa;
+  --color-btn: #e5e5e5;
+  --color-btn-hover: #bcbcbc;
+  --color-status-error: #f87171;
+}
+
+.xml-line {
+  display: flex;
+  min-height: 1.75rem;
+  align-items: center;
+  white-space: pre;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8125rem;
+  line-height: 1.75rem;
+}
+.xml-toggle, .xml-toggle-spacer {
+  display: inline-flex;
+  width: 1.25rem;
+  height: 1.5rem;
+  flex: 0 0 1.25rem;
+  align-items: center;
+  justify-content: center;
+  color: #a1a194;
+}
+.xml-toggle:hover { color: #fafafa; }
+.xml-node-icon { margin-right: 0.35rem; flex: 0 0 auto; color: #a1a194; }
+.xml-punctuation { color: #a1a194; }
+.xml-tag { color: #93c5fd; }
+.xml-attribute-name { color: #c4b5fd; }
+.xml-attribute-value { color: #86efac; }
+.xml-text { color: #e5e5e5; }
+.xml-comment { color: #737373; }
+.xml-cdata { color: #fcd34d; }
+.xml-summary { margin-left: 0.4rem; color: #737373; font-size: 0.75rem; }
+.xml-summary:hover { color: #d4d4d4; }
