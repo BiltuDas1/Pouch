@@ -12,7 +12,15 @@
   "title": "XML Formatter",
   "description": "Validate, format and explore XML documents with two-space indentation, a collapsible XML tree, and copy support.",
   "keywords": [
-    "xml", "xml formatter", "xml parser", "xml validator", "xml beautifier",
-    "pretty print xml", "xml viewer", "xml tree", "format xml", "xml editor"
+    "xml",
+    "xml formatter",
+    "xml parser",
+    "xml validator",
+    "xml beautifier",
+    "pretty print xml",
+    "xml viewer",
+    "xml tree",
+    "format xml",
+    "xml editor"
   ]
 }
