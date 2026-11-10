@@ -1,0 +1,41 @@
+{
+  "name": "@pouch/favicon-generator",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "icojs": "^1.0.1"
+  },
+  "peerDependencies": {
+    "lucide-react": "^1.61.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "title": "Favicon Generator",
+  "description": "Create a multi-resolution favicon.ico from a single square image. Choose which sizes to include from 16×16 to 256×256, validate the source image, and download one ICO file with every selected size embedded.",
+  "keywords": [
+    "favicon",
+    "favicon generator",
+    "favicon.ico",
+    "ico",
+    "ico generator",
+    "multi-resolution ico",
+    "multi size ico",
+    "icon generator",
+    "icon sizes",
+    "image to ico",
+    "image to favicon",
+    "square image",
+    "1:1 aspect ratio",
+    "16x16",
+    "32x32",
+    "48x48",
+    "64x64",
+    "128x128",
+    "256x256",
+    "browser icon",
+    "site icon",
+    "website icon",
+    "developer tools"
+  ]
+}
