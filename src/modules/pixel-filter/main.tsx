@@ -7,8 +7,11 @@ import {
   Download,
   ImagePlus,
   Lock,
+  LockKeyhole,
   LockOpen,
+  RefreshCw,
   RotateCcw,
+  Upload,
   X,
 } from "lucide-react";
 import ShadowModule from "../../components/ShadowModule";
@@ -402,7 +405,7 @@ export default function PixelFilter() {
 
   return (
     <ShadowModule css={styles} includeShadowStyles>
-      <section className="mx-auto w-full max-w-7xl space-y-5">
+      <section className="mx-auto w-full max-w-5xl space-y-5">
         <input
           ref={inputRef}
           type="file"
@@ -423,24 +426,8 @@ export default function PixelFilter() {
               inverse transparency.
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => inputRef.current?.click()}
-              className="inline-flex items-center gap-2 rounded-lg bg-button-primary px-3 py-2 text-sm font-medium text-dark"
-            >
-              <ImagePlus size={16} /> Choose image
-            </button>
-            {fileName && (
-              <button
-                type="button"
-                onClick={reset}
-                title="Clear image"
-                className="rounded-lg border border-border-primary p-2 text-text-secondary hover:text-text-primary"
-              >
-                <X size={16} />
-              </button>
-            )}
+          <div className="flex items-center gap-2 rounded-full border border-border-primary px-3 py-1.5 text-xs text-text-secondary">
+            <LockKeyhole size={14} /> Processed locally in your browser
           </div>
         </div>
         {!fileName ? (
@@ -453,14 +440,19 @@ export default function PixelFilter() {
               const file = e.dataTransfer.files[0];
               if (file) void loadFile(file);
             }}
-            className="flex min-h-72 w-full flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-border-primary bg-background-secondary p-8 text-center"
+            className="flex min-h-64 w-full flex-col items-center justify-center rounded-2xl border border-dashed border-border-primary bg-background-secondary p-8 text-center transition hover:border-text-secondary"
           >
-            <ImagePlus size={32} className="text-text-secondary" />
+            <div className="mb-4 rounded-2xl border border-border-primary p-4">
+              <ImagePlus size={30} color="var(--color-text-secondary)" />
+            </div>
             <span className="font-medium text-text-primary">
               Drop an image here or browse
             </span>
-            <span className="text-xs text-text-secondary">
-              Images are processed locally in your browser.
+            <span className="mt-2 text-sm text-text-secondary">
+              PNG, JPEG, WebP, GIF or SVG
+            </span>
+            <span className="mt-5 inline-flex items-center gap-2 rounded-lg bg-button-primary px-4 py-2 text-sm font-medium text-dark">
+              <Upload size={15} /> Choose image
             </span>
           </button>
         ) : (
@@ -497,6 +489,22 @@ export default function PixelFilter() {
                     </button>
                   ))}
                 </div>
+                <button
+                  type="button"
+                  onClick={() => inputRef.current?.click()}
+                  title="Choose another image"
+                  className="rounded-lg border border-border-primary p-2 text-text-secondary hover:text-text-primary"
+                >
+                  <RefreshCw size={16} />
+                </button>
+                <button
+                  type="button"
+                  onClick={reset}
+                  title="Remove image"
+                  className="rounded-lg border border-border-primary p-2 text-text-secondary hover:text-text-primary"
+                >
+                  <X size={16} />
+                </button>
               </div>
             </div>
             <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(18rem,.65fr)]">
@@ -740,7 +748,7 @@ export default function PixelFilter() {
                         onChange={(e) =>
                           setInverseAlpha(Number(e.target.value))
                         }
-                        className="w-full accent-(--color-button-primary)"
+                        className="w-full accent-button-primary"
                       />
                       <span className="flex justify-between text-[10px] text-text-secondary">
                         <span>0% · Transparent</span>
