@@ -30,3 +30,6 @@ dist-ssr
 
 # Archive
 *.zip
+
+# Pi
+.pi/

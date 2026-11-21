@@ -1,0 +1,38 @@
+{
+  "name": "@pouch/url-cleaner",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.3.3",
+    "lucide-react": "^1.61.0"
+  },
+  "title": "URL Cleaner",
+  "description": "Remove tracking parameters and unnecessary query strings from links. Paste a URL and get a cleaner, shareable version, with an option to drop everything after the question mark.",
+  "keywords": [
+    "url cleaner",
+    "clean url",
+    "link cleaner",
+    "remove tracking",
+    "tracking parameters",
+    "tracking removal",
+    "utm",
+    "utm source",
+    "utm medium",
+    "utm campaign",
+    "fbclid",
+    "gclid",
+    "query string",
+    "query string remover",
+    "strip query",
+    "url sanitizer",
+    "share links",
+    "privacy",
+    "marketing parameters",
+    "url",
+    "link",
+    "developer tools"
+  ]
+}
