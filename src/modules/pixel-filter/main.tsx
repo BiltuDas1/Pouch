@@ -91,6 +91,7 @@ export default function PixelFilter() {
   const [zoomColor, setZoomColor] = useState("#000000FF");
   const [zoomRgba, setZoomRgba] = useState("RGBA(0, 0, 0, 255)");
   const [zoomInsideImage, setZoomInsideImage] = useState(false);
+  const [pointerOverPreview, setPointerOverPreview] = useState(false);
   const [valuesLocked, setValuesLocked] = useState(false);
   const [inverseFilter, setInverseFilter] = useState(false);
   const [inverseAlpha, setInverseAlpha] = useState(0);
@@ -538,10 +539,12 @@ export default function PixelFilter() {
                         clientX: e.clientX,
                         clientY: e.clientY,
                       };
+                      setPointerOverPreview(true);
                       if (ctrlHeld) updateZoom();
                     }}
                     onPointerLeave={() => {
                       pointerRef.current = null;
+                      setPointerOverPreview(false);
                       setZoomInsideImage(false);
                     }}
                     className={`${checkerboard ? "pixel-checker" : "bg-background-primary"} relative flex min-h-72 max-h-[70vh] items-center justify-center overflow-hidden p-4`}
@@ -550,7 +553,7 @@ export default function PixelFilter() {
                       ref={canvasRef}
                       className="h-auto max-h-[65vh] max-w-full object-contain shadow-lg"
                     />
-                    {ctrlHeld && pointerRef.current && (
+                    {ctrlHeld && pointerOverPreview && (
                       <div
                         className="pointer-events-none absolute z-20 overflow-hidden rounded-xl border-2 border-white/80 bg-background-secondary shadow-2xl"
                         style={{

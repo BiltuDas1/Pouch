@@ -565,7 +565,7 @@ export function removeMetadata(
       supported: true,
     };
   let output: Uint8Array;
-  let removed: string[] = [];
+  let removed: string[];
   if (format === "JPEG") ({ output, removed } = scrubJpeg(input, selected));
   else if (format === "PNG") ({ output, removed } = scrubPng(input, selected));
   else if (format === "WebP")
@@ -597,7 +597,6 @@ function scrubJpeg(b: Uint8Array, selected: Set<MetadataGroup>) {
     const marker = b[p++];
     if (marker === 0xda) {
       parts.push(b.slice(start));
-      p = b.length;
       break;
     }
     if (

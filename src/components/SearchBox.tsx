@@ -25,6 +25,7 @@ export default function SearchBox({ setSearchBoxState }: SearchBoxProps) {
     const timeout = setTimeout(() => {
       if (inputValue.length > 0) {
         setQuery(inputValue);
+        setSearching(false);
       }
     }, 2000);
 
@@ -34,12 +35,7 @@ export default function SearchBox({ setSearchBoxState }: SearchBoxProps) {
   // Search on anything changes
   const results = useMemo(() => {
     return searchModules(query);
-  }, [searchModules, query]);
-
-  // Disable loading spinner
-  useEffect(() => {
-    setSearching(false);
-  }, [results]);
+  }, [query]);
 
   return (
     <section

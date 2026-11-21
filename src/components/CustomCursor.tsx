@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 
+const FINE_POINTER_QUERY = "(hover: hover) and (pointer: fine)";
+
 export default function CustomCursor() {
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [visible, setVisible] = useState(false);
-  const [hasFinePointer, setHasFinePointer] = useState(false);
+  const [hasFinePointer, setHasFinePointer] = useState(
+    () => window.matchMedia(FINE_POINTER_QUERY).matches,
+  );
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
-
-    setHasFinePointer(mediaQuery.matches);
+    const mediaQuery = window.matchMedia(FINE_POINTER_QUERY);
 
     const handleChange = (e: MediaQueryListEvent) => {
       setHasFinePointer(e.matches);

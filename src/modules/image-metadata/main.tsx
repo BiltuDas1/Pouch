@@ -104,6 +104,7 @@ const displayValue = (value: unknown) =>
 
 export default function ImageMetadata() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const previewUrlRef = useRef<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [info, setInfo] = useState<ImageInfo | null>(null);
   const [selected, setSelected] = useState<MetadataGroup[]>([
@@ -122,14 +123,18 @@ export default function ImageMetadata() {
   const [previewUrl, setPreviewUrl] = useState("");
   const [includeCustom, setIncludeCustom] = useState(false);
   useEffect(() => {
-    if (!file) {
-      setPreviewUrl("");
-      return;
-    }
-    const url = URL.createObjectURL(file);
-    setPreviewUrl(url);
-    return () => URL.revokeObjectURL(url);
-  }, [file]);
+    return () => {
+      if (previewUrlRef.current) {
+        URL.revokeObjectURL(previewUrlRef.current);
+      }
+    };
+  }, []);
+
+  function revokePreview() {
+    if (!previewUrlRef.current) return;
+    URL.revokeObjectURL(previewUrlRef.current);
+    previewUrlRef.current = null;
+  }
 
   const grouped = useMemo(() => {
     const map = new Map<MetadataGroup, MetadataField[]>();
@@ -151,6 +156,10 @@ export default function ImageMetadata() {
     setRemoved([]);
     try {
       const parsed = await inspectImage(next);
+      revokePreview();
+      const url = URL.createObjectURL(next);
+      previewUrlRef.current = url;
+      setPreviewUrl(url);
       setFile(next);
       setInfo(parsed);
       setTab("metadata");
@@ -213,7 +222,9 @@ export default function ImageMetadata() {
     URL.revokeObjectURL(url);
   }
   function reset() {
+    revokePreview();
     setFile(null);
+    setPreviewUrl("");
     setIncludeCustom(false);
     setInfo(null);
     setResult(null);
