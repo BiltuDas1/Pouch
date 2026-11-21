@@ -21,6 +21,8 @@ type ChannelRange = { start: number; end: number };
 type ColorEntry = { key: number; pixels: Uint32Array; count: number };
 type DisplayMode = "rgba" | "hex8" | "hex6";
 const clamp = (n: number) => Math.max(0, Math.min(255, Math.round(n)));
+const MIN_ZOOM = 2;
+const MAX_ZOOM = 16;
 const pack = (r: number, g: number, b: number, a: number) =>
   ((r << 24) | (g << 16) | (b << 8) | a) >>> 0;
 const unpack = (key: number) =>
@@ -92,6 +94,7 @@ export default function PixelFilter() {
   const [zoomRgba, setZoomRgba] = useState("RGBA(0, 0, 0, 255)");
   const [zoomInsideImage, setZoomInsideImage] = useState(false);
   const [pointerOverPreview, setPointerOverPreview] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(4);
   const [valuesLocked, setValuesLocked] = useState(false);
   const [inverseFilter, setInverseFilter] = useState(false);
   const [inverseAlpha, setInverseAlpha] = useState(0);
@@ -185,8 +188,8 @@ export default function PixelFilter() {
     const ctx = zoom.getContext("2d");
     if (!ctx) return;
     const zoomSize = 180;
-    const sourceSizeX = (zoomSize / 4) * scaleX;
-    const sourceSizeY = (zoomSize / 4) * scaleY;
+    const sourceSizeX = (zoomSize / zoomLevel) * scaleX;
+    const sourceSizeY = (zoomSize / zoomLevel) * scaleY;
     // Keep the pointer's pixel under the crosshair, even at image edges.
     // Drawing the whole preview into a larger virtual view leaves empty space
     // beyond the image instead of clamping the crop and shifting the target.
@@ -242,7 +245,7 @@ export default function PixelFilter() {
         Math.min(Math.max(8, wrapRect.height - 188 - 8), pointer.y + 24),
       ),
     });
-  }, [ctrlHeld]);
+  }, [ctrlHeld, zoomLevel]);
 
   useEffect(() => {
     const down = (event: KeyboardEvent) => {
@@ -547,6 +550,20 @@ export default function PixelFilter() {
                       setPointerOverPreview(false);
                       setZoomInsideImage(false);
                     }}
+                    onPointerDown={(event) => {
+                      if (!ctrlHeld) return;
+
+                      if (event.button === 2) {
+                        event.preventDefault();
+                        setZoomLevel((level) => Math.min(MAX_ZOOM, level + 1));
+                      } else if (event.button === 0) {
+                        event.preventDefault();
+                        setZoomLevel((level) => Math.max(MIN_ZOOM, level - 1));
+                      }
+                    }}
+                    onContextMenu={(event) => {
+                      if (ctrlHeld) event.preventDefault();
+                    }}
                     className={`${checkerboard ? "pixel-checker" : "bg-background-primary"} relative flex min-h-72 max-h-[70vh] items-center justify-center overflow-hidden p-4`}
                   >
                     <canvas
@@ -576,12 +593,12 @@ export default function PixelFilter() {
                           </span>
                         )}
                         <span className="absolute bottom-1 left-0 right-0 text-center text-[10px] font-semibold text-white drop-shadow">
-                          4× zoom · Ctrl
+                          {zoomLevel}× zoom · Ctrl
                         </span>
                       </div>
                     )}
                     <span className="pointer-events-none absolute bottom-2 left-2 rounded bg-black/60 px-2 py-1 text-[10px] text-white">
-                      Hold Ctrl and hover to zoom
+                      Hold Ctrl to zoom · Left click − / Right click +
                     </span>
                   </div>
                 </div>
