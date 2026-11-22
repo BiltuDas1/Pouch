@@ -106,6 +106,7 @@ export default function PixelFilter() {
   const [matchedPixels, setMatchedPixels] = useState(0);
   const [matchedColors, setMatchedColors] = useState(0);
   const [copied, setCopied] = useState("");
+  const [copiedKey, setCopiedKey] = useState<number | null>(null);
   const copyToastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const updateRange = (
@@ -383,11 +384,22 @@ export default function PixelFilter() {
     try {
       await navigator.clipboard.writeText(value);
       setCopied(value);
+      setCopiedKey(key);
       if (copyToastTimerRef.current) clearTimeout(copyToastTimerRef.current);
-      copyToastTimerRef.current = setTimeout(() => setCopied(""), 1800);
+      copyToastTimerRef.current = setTimeout(() => {
+        setCopied("");
+        setCopiedKey(null);
+      }, 1800);
     } catch {
       setError("Clipboard access is unavailable in this browser context.");
     }
+  };
+
+  const toggleColorFormat = (key: number) => {
+    setSwatchModes((old) => ({
+      ...old,
+      [key]: !(old[key] ?? mode !== "rgba"),
+    }));
   };
 
   useEffect(
@@ -409,7 +421,7 @@ export default function PixelFilter() {
 
   return (
     <ShadowModule css={styles} includeShadowStyles>
-      <section className="mx-auto w-full max-w-5xl space-y-5">
+      <section className="relative mx-auto w-full max-w-5xl space-y-5">
         <input
           ref={inputRef}
           type="file"
@@ -832,12 +844,7 @@ export default function PixelFilter() {
                             onClick={() => void copyColor(entry.key, rowMode)}
                             onContextMenu={(e) => {
                               e.preventDefault();
-                              setSwatchModes((old) => ({
-                                ...old,
-                                [entry.key]: !(
-                                  old[entry.key] ?? mode !== "rgba"
-                                ),
-                              }));
+                              toggleColorFormat(entry.key);
                             }}
                             className="pixel-checker size-8 shrink-0 overflow-hidden rounded border border-border-primary"
                           >
@@ -851,8 +858,12 @@ export default function PixelFilter() {
                           <button
                             type="button"
                             onClick={() => void copyColor(entry.key, rowMode)}
+                            onContextMenu={(e) => {
+                              e.preventDefault();
+                              toggleColorFormat(entry.key);
+                            }}
                             className="min-w-0 flex-1 truncate text-left font-mono text-xs text-text-primary hover:underline"
-                            title="Click to copy the currently displayed color value"
+                            title="Click to copy; right-click to toggle RGBA / HEX"
                           >
                             {display}
                           </button>
@@ -862,10 +873,19 @@ export default function PixelFilter() {
                           <button
                             type="button"
                             onClick={() => void copyColor(entry.key, rowMode)}
-                            title="Copy color"
+                            title={
+                              copiedKey === entry.key ? "Copied" : "Copy color"
+                            }
+                            aria-label={
+                              copiedKey === entry.key ? "Copied" : "Copy color"
+                            }
                             className="rounded p-1 text-text-secondary hover:text-text-primary"
                           >
-                            <Copy size={13} />
+                            {copiedKey === entry.key ? (
+                              <Check size={13} />
+                            ) : (
+                              <Copy size={13} />
+                            )}
                           </button>
                         </div>
                       );
@@ -891,11 +911,23 @@ export default function PixelFilter() {
             </section>
           </>
         )}
-        {busy && fileName && (
-          <p className="text-center text-xs text-text-secondary">
-            Building color index and preparing preview… Large images may take a
-            moment.
-          </p>
+        {busy && (
+          <div
+            role="status"
+            aria-live="polite"
+            className="absolute inset-0 z-30 flex flex-col items-center justify-center gap-3 rounded-2xl bg-black/40 backdrop-blur-md"
+          >
+            <span
+              aria-hidden="true"
+              className="size-10 animate-spin rounded-full border-2 border-text-secondary border-t-transparent"
+            />
+            <p className="text-sm font-medium text-text-primary">
+              Loading image…
+            </p>
+            <p className="text-xs text-text-secondary">
+              Building the color index and preparing the preview.
+            </p>
+          </div>
         )}
         {copied && (
           <div
